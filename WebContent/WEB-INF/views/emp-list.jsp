@@ -7,6 +7,37 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="scripts/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+
+$(function(){
+	//1. 点击 delete 时, 弹出 确定是要删除 xx 的信息吗 ? 若确定, 执行删除, 若不确定, 则取消
+	$(".delete").click(function(){
+		var lastName = $(this).next(":hidden").val();
+		var flag = confirm("确定要删除" + lastName + "的信息吗?");
+		if(flag){
+		    var $tr = $(this).parent().parent();
+			//删除, 使用 ajax 的方式
+			var url = this.href;
+			var args = {"time":new Date()};
+			  $.post(url, args, function(data){
+				//若 data 的返回值为 1, 则提示 删除成功, 且把当前行删除
+				if(data == "1"){
+					alert("删除成功!");
+					$tr.remove();
+				}else{
+					//若 data 的返回值不是 1, 提示删除失败. 
+					alert("删除失败!");
+				}
+			});	 
+		}
+		
+		//取消超链接的默认行为
+		return false;
+	});		
+})
+
+</script>
 </head>
 <body>
 	
@@ -34,7 +65,10 @@
 					<td>${birth }</td>
 					<td>${createTime }</td>
 					<td>${department.departmentName }</td>
-					<td><a href="emp-delete?id=${id}">Delete</a></td>
+					<td>
+						<a href="emp-delete?id=${id}" class="delete">Delete</a>
+						<input type="hidden" value="${lastName }"/>
+					</td>
 				</tr>
 			</s:iterator>
 		</table>
