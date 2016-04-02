@@ -56,6 +56,7 @@ $(function(){
 				<td>CREATETIME</td>
 				<td>DEPT</td>
 				<td>DELETE</td>
+				<td>EDIT</td>
 			</tr>
 			<s:iterator value="#request.employees">
 				<tr>
@@ -72,6 +73,9 @@ $(function(){
 					<td>
 						<a href="emp-delete?id=${id}" class="delete">Delete</a>
 						<input type="hidden" value="${lastName }"/>
+					</td>
+					<td>
+						<a href="emp-input?id=${id }">Edit</a>
 					</td>
 				</tr>
 			</s:iterator>

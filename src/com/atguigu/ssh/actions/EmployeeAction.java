@@ -69,10 +69,18 @@ public class EmployeeAction extends ActionSupport implements RequestAware, Model
 		return INPUT;
 	}
 	
+	public void prepareInput(){
+		if(id != null){
+			model = employeeService.get(id);
+		}
+	}
+	
 	public String save(){
 		System.out.println(model);
 		
-		model.setCreateTime(new Date());			
+		if(id == null){
+			model.setCreateTime(new Date());			
+		}
 		employeeService.saveOrUpdate(model);
 		return SUCCESS;
 	}

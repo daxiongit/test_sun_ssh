@@ -33,4 +33,10 @@ public class EmployeeDao extends BaseDao{
 		return employee;*/
 	}
 	
+	public Employee get(Integer id){
+		System.out.println((Employee)getSession().get(Employee.class, id));
+		return (Employee)getSession().get(Employee.class, id);
+		
+	}
+	
 }
