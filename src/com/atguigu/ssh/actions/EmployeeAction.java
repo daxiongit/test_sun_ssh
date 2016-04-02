@@ -96,7 +96,13 @@ public class EmployeeAction extends ActionSupport implements RequestAware, Model
 	public void prepare() throws Exception {}
 
 	public void prepareSave(){
-		model = new Employee();
+	//	model = new Employee();
+		
+		if(id == null){
+			model = new Employee();
+		}else{
+			model = employeeService.get(id);
+		}
 	}
 	
 	private String lastName;

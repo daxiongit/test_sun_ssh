@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Hello! Welcome to my website</title>
 <script type="text/javascript" src="scripts/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
 	
@@ -48,7 +48,7 @@
 </head>
 <body>
 
-	<s:debug></s:debug>
+   <%-- <s:debug></s:debug> --%>
 
 	<h4>Employee Input Page</h4>
 
@@ -58,8 +58,8 @@
 			<s:hidden name="id"></s:hidden>
 			
 			<!-- 通过添加隐藏域的方式把未显式提交的字段值提交到服务器 -->
-			<s:hidden name="lastName"></s:hidden>
-			<s:hidden name="createTime"></s:hidden>
+			<%-- <s:hidden name="lastName"></s:hidden>
+			<s:hidden name="createTime"></s:hidden> --%>
 			
 		</s:if>
 		<s:else>
