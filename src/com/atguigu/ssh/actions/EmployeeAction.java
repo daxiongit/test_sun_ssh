@@ -91,6 +91,22 @@ public class EmployeeAction extends ActionSupport implements RequestAware, Model
 		model = new Employee();
 	}
 	
+	private String lastName;
+	
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
+	public String validateLastName() throws UnsupportedEncodingException{
+		if(employeeService.lastNameIsValid(lastName)){
+			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8")); 
+		}else{
+			inputStream = new ByteArrayInputStream("0".getBytes("UTF-8")); 
+		}
+		
+		return "ajax-success";
+	}
+	
 	private Employee model;
 	
 	@Override

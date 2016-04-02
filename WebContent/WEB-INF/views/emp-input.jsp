@@ -10,7 +10,7 @@
 <script type="text/javascript" src="scripts/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
 	
-	/* $(function(){
+	 $(function(){
 		$(":input[name=lastName]").change(function(){
 			var val = $(this).val();
 			val = $.trim(val);
@@ -42,7 +42,7 @@
 				$this.focus();
 			}
 		});
-	}) */
+	}) 
 	
 </script>
 </head>
