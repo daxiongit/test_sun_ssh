@@ -10,5 +10,9 @@
 	
 	<a href="emp-list">List All Employees</a>
 	
+	<br><br>
+	
+	<a href="emp-input">Add New Employee</a>
+	
 </body>
 </html>

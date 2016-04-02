@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
 
+import com.atguigu.ssh.service.DepartmentService;
 import com.atguigu.ssh.service.EmployeeService;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -18,6 +19,12 @@ public class EmployeeAction extends ActionSupport implements RequestAware{
 
 	public void setEmployeeService(EmployeeService employeeService) {
 		this.employeeService = employeeService;
+	}
+	
+	private DepartmentService departmentService;
+	
+	public void setDepartmentService(DepartmentService departmentService) {
+		this.departmentService = departmentService;
 	}
 	
 	public String list() {
@@ -51,6 +58,11 @@ public class EmployeeAction extends ActionSupport implements RequestAware{
 			}
 		}
 		return "ajax-success";
+	}
+	
+	public String input(){
+		request.put("departments", departmentService.getAll());
+		return INPUT;
 	}
 	
 	private Map<String, Object> request;
