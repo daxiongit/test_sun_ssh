@@ -3,15 +3,19 @@ package com.atguigu.ssh.actions;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
 
+import com.atguigu.ssh.entities.Employee;
 import com.atguigu.ssh.service.DepartmentService;
 import com.atguigu.ssh.service.EmployeeService;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.Preparable;
 
-public class EmployeeAction extends ActionSupport implements RequestAware{
+public class EmployeeAction extends ActionSupport implements RequestAware, ModelDriven<Employee>, Preparable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -65,11 +69,33 @@ public class EmployeeAction extends ActionSupport implements RequestAware{
 		return INPUT;
 	}
 	
+	public String save(){
+		System.out.println(model);
+		
+		model.setCreateTime(new Date());			
+		employeeService.saveOrUpdate(model);
+		return SUCCESS;
+	}
+	
 	private Map<String, Object> request;
 	
 	@Override
 	public void setRequest(Map<String, Object> arg0) {
 		this.request = arg0;
+	}
+
+	@Override
+	public void prepare() throws Exception {}
+
+	public void prepareSave(){
+		model = new Employee();
+	}
+	
+	private Employee model;
+	
+	@Override
+	public Employee getModel() {
+		return model;
 	}
 
 }

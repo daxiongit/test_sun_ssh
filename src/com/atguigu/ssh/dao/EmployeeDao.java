@@ -19,4 +19,8 @@ public class EmployeeDao extends BaseDao{
 		getSession().createQuery(hql).setInteger(0, id).executeUpdate();
 	}
 	
+	public void saveOrUpdate(Employee employee){
+		getSession().saveOrUpdate(employee);
+	}
+	
 }

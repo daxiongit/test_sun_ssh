@@ -24,6 +24,10 @@ public class EmployeeService {
 		return employeeDao.getAll();
 	}
 	
+	public void saveOrUpdate(Employee employee){
+		employeeDao.saveOrUpdate(employee);
+	}
+	
 	public void delete(Integer id){
 		employeeDao.delete(id);
 	}
